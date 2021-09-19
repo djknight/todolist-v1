@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 //items to render html item array
-var items = [];
+let items = [];
 
 //ejs to use the view engine
 app.set("view engine", "ejs");
@@ -12,21 +12,21 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
-  var today = new Date();
+  let today = new Date();
 
-  var options = {
+  let options = {
     weekday: "long",
     day: "numeric",
     month: "long",
   };
-  var day = today.toLocaleDateString("en-US", options);
+  let day = today.toLocaleDateString("en-US", options);
 
   //ejs file render html
   res.render("list", { kindOfDay: day, newListItem: items });
 });
 //post newItem function item
 app.post("/", function (req, res) {
-  var item = req.body.newItem;
+  let item = req.body.newItem;
   //array use
   items.push(item);
   //redirect for item home
