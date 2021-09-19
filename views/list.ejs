@@ -4,19 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>list</title>
   </head>
   <body>
-    <h1>To Day is <%= kindOfDay %></h1>
-    <!-- a forloop  -->
-    <ul>
+    <div class="box" id="heading">
+      <h1>ToDay is <%= kindOfDay %></h1>
+    </div>
+
+    <div class="box">
+      <!-- a forloop  -->
       <% for(let i = 0 ; i < newListItem.length; i++) {%>
-      <li><%= newListItem[i] %></li>
+      <div class="item">
+        <input type="checkbox" />
+        <p><%= newListItem[i] %></p>
+      </div>
       <% } %>
-    </ul>
-    <form class="" action="/" method="post">
-      <input type="text" name="newItem" />
-      <button type="submit" name="button">Add</button>
-    </form>
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New Item"/>
+        <button type="submit" name="button">+</button>
+      </form>
+    </div>
   </body>
 </html>

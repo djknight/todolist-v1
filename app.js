@@ -4,13 +4,14 @@ const bodyParser = require("body-parser");
 const app = express();
 
 //items to render html item array
-let items = [];
+let items = ["Buy food","Cook food"];
 
 //ejs to use the view engine
 app.set("view engine", "ejs");
 //bodyParser for newItem
 app.use(bodyParser.urlencoded({ extended: true }));
-
+//css
+app.use(express.static("public"));
 app.get("/", function (req, res) {
   let today = new Date();
 
