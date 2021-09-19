@@ -5,12 +5,12 @@ const app = express();
 
 //ejs to use the view engine
 app.set("view engine", "ejs");
+//bodyParser for newItem
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/", function (req, res) {
 
   var today = new Date();
-//   var currentDay = today.getDay();
-//   var day = "";
 
 var options = {
     weekday:"long",
@@ -19,33 +19,13 @@ var options = {
 };
   var day = today.toLocaleDateString("en-US",options);
 
-
-//   switch (currentDay) {
-//     case 0:
-//       day = "Sunday";
-//       break;
-//     case 1:
-//       day = "Monday";
-//       break;
-//     case 2:
-//       day = "Tuesday";
-//       break;
-//     case 3:
-//       day = "Wensday";
-//       break;
-//     case 4:
-//       day = "thursday";
-//       break;
-//     case 5:
-//       day = "friday";
-//       break;
-//     case 6:
-//       day = "saterday";
-//       break;
-//     default:
-//   }
   //ejs file render html
   res.render("list", { kindOfDay: day });
+});
+//post newItem function
+app.post("/",function(req, res){
+    var item = req.body.newItem;
+    console.log(item);
 });
 
 app.listen(3000, function () {
