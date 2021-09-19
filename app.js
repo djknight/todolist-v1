@@ -7,7 +7,7 @@ const app = express();
 let items = ["Buy food", "Cook food"];
 
 // work items for the workpage line of code
-let workItems = [];
+let workItems = ["Code", "More code!"];
 
 //ejs to use the view engine
 app.set("view engine", "ejs");
@@ -25,6 +25,7 @@ app.get("/", function (req, res) {
     day: "numeric",
     month: "long",
   };
+
   let day = today.toLocaleDateString("en-US", options);
 
   //ejs file render html
@@ -36,7 +37,7 @@ app.post("/", function (req, res) {
   let item = req.body.newItem;
 
   //work + post req
-  if (req.body.list === "Work") {
+  if (req.body.list === "Work List") {
     workItems.push(item);
     res.redirect("/work");
   } else {
