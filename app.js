@@ -4,12 +4,17 @@ const bodyParser = require("body-parser");
 const app = express();
 
 //items to render html item array
-let items = ["Buy food","Cook food"];
+let items = ["Buy food", "Cook food"];
+
+// work items for the workpage line of code
+let workItems = [];
 
 //ejs to use the view engine
 app.set("view engine", "ejs");
+
 //bodyParser for newItem
 app.use(bodyParser.urlencoded({ extended: true }));
+
 //css
 app.use(express.static("public"));
 app.get("/", function (req, res) {
@@ -23,15 +28,26 @@ app.get("/", function (req, res) {
   let day = today.toLocaleDateString("en-US", options);
 
   //ejs file render html
-  res.render("list", { kindOfDay: day, newListItem: items });
+  res.render("list", { listTitle: day, newListItem: items });
 });
+
 //post newItem function item
 app.post("/", function (req, res) {
   let item = req.body.newItem;
-  //array use
-  items.push(item);
-  //redirect for item home
-  res.redirect("/");
+
+  //work + post req
+  if (req.body.list === "Work") {
+    workItems.push(item);
+    res.redirect("/work");
+  } else {
+    items.push(item);
+    res.redirect("/");
+  }
+});
+
+//workpage
+app.get("/work", function (req, res) {
+  res.render("list", { listTitle: "Work List", newListItem: workItems });
 });
 
 app.listen(3000, function () {
