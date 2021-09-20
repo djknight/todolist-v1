@@ -50,7 +50,14 @@ app.post("/", function (req, res) {
 app.get("/work", function (req, res) {
   res.render("list", { listTitle: "Work List", newListItem: workItems });
 });
-
+//about page
+app.get("/about", function (req, res) {
+  res.render("about");
+});
+//login
+app.get("/login", function (req, res) {
+  res.render("login");
+});
 app.listen(3000, function () {
   console.log("server started");
 });

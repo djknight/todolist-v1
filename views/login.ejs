@@ -1,0 +1,69 @@
+<%- include("header") -%>
+<div class="overlay">
+  <form>
+    <div class="con">
+      <header class="head-form">
+        <h2>Log In</h2>
+
+        <p>login here using your username and password</p>
+      </header>
+
+      <br />
+      <div class="field-set">
+        <!--   user name -->
+        <span class="input-item">
+          <i class=""></i>
+        </span>
+        <!-- Input-->
+        <input
+          class="form-input"
+          id="txt-input"
+          type="text"
+          placeholder="@UserName"
+          required
+        />
+
+        <br />
+
+        <!--   Password -->
+
+        <span class="input-item">
+          <i class=""></i>
+        </span>
+        <!--   Password Input-->
+        <input
+          class="form-input"
+          type="password"
+          placeholder="Password"
+          id="pwd"
+          name="password"
+          required
+        />
+
+        <!--      Show/hide password  -->
+        <span>
+          <i class="" aria-hidden="true" type="button" id=""></i>
+        </span>
+
+        <br />
+        <br />
+        <!--        buttons -->
+        <!--      button LogIn -->
+        <button class="log-in logbutton">Log In</button>
+      </div>
+
+      <!--   other buttons -->
+      <div class="other">
+        <!--     Forgot Password button-->
+        <button class="btn submits frgt-pass logbutton">Forgot Password</button>
+        <!--     Sign Up button -->
+        <button class="btn submits sign-up logbutton">
+          Sign Up
+          <!--     Sign Up font icon -->
+          <i class="" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<%- include("footer") -%>
